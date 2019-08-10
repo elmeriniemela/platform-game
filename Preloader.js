@@ -9,7 +9,7 @@ class Preloader extends Phaser.Scene {
 
     preload() 
     {   
-        var current_folder = '/static/games/platform-game/'
+        var current_folder = '/static/games/phaser-games/platform-game/'
         
         this.load.image('sky', current_folder + 'assets/sky.png');
         this.load.image('ground', current_folder + 'assets/platform.png');
