@@ -22,14 +22,16 @@ class Leaderboard extends Phaser.Scene {
     postScore(score)
     {
         this.score = score;
+        var csrfmiddlewaretoken = $("[name='csrfmiddlewaretoken']").val()
         $.ajax({
             type: 'POST',
-            url: '/post-score',
+            url: window.location.pathname + 'post-score',
             // Add this scene as the scope of the succes callback 
             // so objects can be added to the scene
             context: this,
             data: {
-                score: score 
+                score: score,
+                csrfmiddlewaretoken: csrfmiddlewaretoken,
             },
             // Call createLeaderboard with the result
             success: this.createLeaderboard
@@ -53,7 +55,7 @@ class Leaderboard extends Phaser.Scene {
 
         startY += 20;
 
-        var scoreLines = $.parseJSON(data)
+        var scoreLines = data
 
         var rank = 1;
         var highlight = true;
